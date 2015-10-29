@@ -38,3 +38,7 @@ public void init() {
 }
 ```
 
+## License
+
+Released under the MIT license. 
+
