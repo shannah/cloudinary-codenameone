@@ -2,6 +2,17 @@
 
 This library adds support for the [Cloudinary](http://cloudinary.com/) image management service to [Codename One](http://www.codenameone.com) apps.  The library itself is a direct port of the [Cloudinary Java SDK](http://cloudinary.com/documentation/java_integration).
 
+## Supported Platforms
+
+Should work on all platforms that Codename One apps can be deployed to:
+
+* iOS
+* Android
+* BlackBerry
+* Windows Phone
+* JavaSE / Desktop /Simulator
+* HTML5
+
 ## Installation
 
 1. Download the [latest release of cloudinary-codenameone.cn1lib](https://github.com/shannah/cloudinary-codenameone/releases/latest) and copy it into your project's "lib" directory.
