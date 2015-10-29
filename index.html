@@ -14,7 +14,8 @@
       <h1 class="project-name">Cloudinary-CodenameOne</h1>
       <h2 class="project-tagline">Codename One library for Cloudinary</h2>
       <a href="https://github.com/shannah/cloudinary-codenameone" class="btn">View on GitHub</a>
-      <a href="https://github.com/shannah/cloudinary-codenameone/releases/download/1.0/cloudinary-codenameone.cn1lib" class="btn">Download .cn1lib</a>
+      <a href="https://github.com/shannah/cloudinary-codenameone/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/shannah/cloudinary-codenameone/tarball/master" class="btn">Download .tar.gz</a>
     </section>
 
     <section class="main-content">
@@ -66,6 +67,41 @@
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>Released under the MIT license. </p>
+
+<h2>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h2>
+
+<ul>
+<li><a href="http://shannah.github.io/cloudinary-codenameone/javadoc/">JavaDocs</a></li>
+<li>
+<a href="http://cloudinary.com/documentation/java_integration">Cloudinary Java Integration Guide</a> - Most of this should be applicable to the Codename One Library</li>
+<li><a href="http://cloudinary.com/documentation/">Cloudinary Documentation Main Page</a></li>
+<li><a href="https://github.com/shannah/cloudinary-codenameone/blob/master/src/com/codename1/cloudinary/CloudinaryDemo.java">Demo Codename One App</a></li>
+</ul>
+
+<h2>
+<a id="building-from-source" class="anchor" href="#building-from-source" aria-hidden="true"><span class="octicon octicon-link"></span></a>Building from Source</h2>
+
+<p>Check out the source from github:</p>
+
+<pre><code>git clone https://github.com/shannah/cloudinary-codenameone.git
+</code></pre>
+
+<p>This project is missing the following files that you will need to copy from another NetBeans codename One project.</p>
+
+<ul>
+<li>JavaSE.jar</li>
+<li>lib/CLDC11.jar</li>
+<li>lib/CodenameOne.jar</li>
+<li>lib/CodenameOne_src.zip</li>
+<li>CodenameOneBuildClient.jar</li>
+</ul>
+
+<p>Once you have copied all of these files into the project, you can just open the project in Netbeans and build it.  </p>
+
+<p>If you run the project it will load a minimal demo app in the simulator that uses Cloudinary.  You'll need to adjust the cloudinary credentials <a href="https://github.com/shannah/cloudinary-codenameone/blob/master/src/com/codename1/cloudinary/CloudinaryDemo.java#L28">here</a> to match your cloudinary account for the demo to work.</p>
+
+<p>If you build the project, you will find the built cn1lib file at dist/cloudinary-codenameone.cn1lib</p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/shannah/cloudinary-codenameone">Cloudinary-CodenameOne</a> is maintained by <a href="https://github.com/shannah">shannah</a>.</span>
