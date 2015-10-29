@@ -4,7 +4,8 @@ This library adds support for the [Cloudinary](http://cloudinary.com/) image man
 
 ## Installation
 
-1. Download the latest release of cloudinary-codenameone.cn1lib and copy it into your project's "lib" directory.
+1. Download the [latest release of cloudinary-codenameone.cn1lib](https://github.com/shannah/cloudinary-codenameone/releases/latest) and copy it into your project's "lib" directory.
+2. Download [BouncyCastleCN1Lib.cn1lib](https://github.com/chen-fishbein/bouncy-castle-codenameone-lib/raw/master/BouncyCastleCN1Lib.cn1lib) and copy it into your project's "lib" directory.
 2. Select "Codename One" > "Refresh Libs"
 
 ## Configuration
