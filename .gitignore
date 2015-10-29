@@ -1,0 +1,10 @@
+cloudinary_java
+build
+dist
+CodenameOneBuildClient.jar
+JavaSE.jar
+private
+CLDC11.jar
+CodenameOne.jar
+CodenameOne_SRC.zip
+.DS_Store

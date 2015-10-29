@@ -1,0 +1,11 @@
+com.cloudinary
+com.cloudinary.api
+com.cloudinary.api.exceptions
+com.cloudinary.codename1
+com.cloudinary.codename1.api
+com.cloudinary.codename1.util
+com.cloudinary.strategies
+com.cloudinary.transformation
+com.cloudinary.utils
+com.codename1.hello
+org.cloudinary.json
