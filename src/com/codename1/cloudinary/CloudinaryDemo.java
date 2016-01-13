@@ -13,6 +13,7 @@ import com.codename1.ui.EncodedImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
+import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import java.io.IOException;
@@ -41,7 +42,7 @@ public class CloudinaryDemo {
         });*/
     }
     
-    public void start() {
+    public void start0() {
         if(current != null){
             current.show();
             return;
@@ -71,10 +72,18 @@ public class CloudinaryDemo {
         hi.addComponent(new Label(img));
         
         
+        //Image img2 = cloudinary.url()
+        //        .type("fetch")
+        //        .format("png")
+        //        .transformation(new Transformation().crop("fill").radius(Display.getInstance().convertToPixels(3, true)))
+        //        .image(encImage, "http://upload.wikimedia.org/wikipedia/commons/4/46/Jennifer_Lawrence_at_the_83rd_Academy_Awards.jpg");
+        
         Image img2 = cloudinary.url()
                 .type("fetch")
                 .format("png")
-                .transformation(new Transformation().crop("fill").radius(Display.getInstance().convertToPixels(3, true)))
+                .transformation(new Transformation().crop("fill")
+                        .width(Display.getInstance().getDisplayWidth())
+                )
                 .image(encImage, "http://upload.wikimedia.org/wikipedia/commons/4/46/Jennifer_Lawrence_at_the_83rd_Academy_Awards.jpg");
         hi.addComponent(new Label(img2));
         Button b = new Button("Upload Image");
@@ -93,6 +102,39 @@ public class CloudinaryDemo {
         hi.show();
     }
 
+    public void start() {
+        Form f = new Form("Test");
+        f.getAllStyles().setPadding(0,0,0,0);
+        f.setLayout(new BoxLayout(BoxLayout.Y_AXIS));
+        
+        int deviceWidth = Display.getInstance().getDisplayWidth();
+        
+        // We create a placeholder image to set the size for the image to fit
+        // to.
+        Image placeholder = Image.createImage(deviceWidth, deviceWidth);
+        EncodedImage encImage = EncodedImage.createFromImage(placeholder, false);
+        
+        // Load an image from cloudinary
+        Image img2 = cloudinary.url()
+                .type("fetch")  // Says we are fetching an image
+                .format("jpg")  // We want it to be a jpg
+                .transformation(
+                    new Transformation().crop("fill")  //  We crop the image to fill the given width/height
+                        .width(deviceWidth)  
+                        .height(deviceWidth)
+                )
+                .image(encImage, "http://upload.wikimedia.org/wikipedia/commons/4/46/Jennifer_Lawrence_at_the_83rd_Academy_Awards.jpg");
+        
+        // Add the image to a label and place it on the form.
+        Label l = new Label(img2);
+        
+        // Get rid of margin and padding so that the image spans the full width of the device.
+        l.getAllStyles().setMargin(0, 0, 0, 0);
+        l.getAllStyles().setPadding(0, 0,0,0);
+        f.addComponent(l);
+        f.show();
+    }
+    
     public void stop() {
         current = Display.getInstance().getCurrent();
     }
