@@ -80,6 +80,7 @@ public class CloudinaryDemo {
         
         Image img2 = cloudinary.url()
                 .type("fetch")
+                .cacheName("Jennifer_Lawrence_at_the_83rd_Academy_Awards.jpg")
                 .format("png")
                 .transformation(new Transformation().crop("fill")
                         .width(Display.getInstance().getDisplayWidth())
