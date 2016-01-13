@@ -73,6 +73,7 @@ public class CloudinaryDemo {
         
         Image img2 = cloudinary.url()
                 .type("fetch")
+                .cacheName("Jennifer_Lawrence_at_the_83rd_Academy_Awards.jpg")
                 .format("png")
                 .transformation(new Transformation().crop("fill").radius(Display.getInstance().convertToPixels(3, true)))
                 .image(encImage, "http://upload.wikimedia.org/wikipedia/commons/4/46/Jennifer_Lawrence_at_the_83rd_Academy_Awards.jpg");
