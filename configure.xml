@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <!--build_version=2.9-->
+        
+<project name="cn1-cloudinary Configuration" default="configure" basedir=".">
+    <description>Configures the dependencies in this project</description>
+    <target name="configure" description="Configures the dependencies">
+        <property name="lib.template.dir" value="cloudinary-codenameone"/>
+        <mkdir dir="lib"/>
+        <mkdir dir="${lib.template.dir}/lib"/>
+        <get src="https://github.com/shannah/binaries/raw/master/cn1-common/CLDC11.jar" dest="lib/CLDC11.jar" skipexisting="true"/>
+        <copy file="lib/CLDC11.jar" tofile="${lib.template.dir}/lib/CLDC11.jar"/>
+        <get skipexisting="true" src="https://github.com/shannah/binaries/raw/master/cn1-common/CodeNameOneBuildClient.jar" dest="CodeNameOneBuildClient.jar"/>
+        <get skipexisting="true" src="https://github.com/shannah/binaries/raw/master/cn1-common/JavaSE.jar" dest="JavaSE.jar"/>
+        <get skipexisting="true" src="https://github.com/shannah/binaries/raw/master/cn1-common/CodenameOne.jar" dest="lib/CodenameOne.jar"/>
+        <copy file="lib/CodenameOne.jar" tofile="${lib.template.dir}/lib/CodenameOne.jar"/>
+        <get skipexisting="true" src="https://github.com/shannah/binaries/raw/master/cn1-common/CodenameOne_SRC.zip" dest="lib/CodenameOne_SRC.zip"/>
+        <copy file="lib/CodenameOne_SRC.zip" tofile="${lib.template.dir}/lib/CodenameOne_SRC.zip"/>
+        
+        <propertyfile
+            file="nbproject/project.properties"
+            comment="My properties">
+          <entry  key="file.reference.CodenameOne.jar" value="lib/CodenameOne.jar"/>
+          <entry  key="file.reference.JavaSE.jar" value="JavaSE.jar"/>
+        </propertyfile>
+    </target>
+
+</project>    
+    
