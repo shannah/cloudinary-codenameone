@@ -50,6 +50,47 @@ public void init() {
 }
 ```
 
+## Usage
+
+**Sample Loading an Image**
+
+```java
+// We create a placeholder image to set the size for the image to fit
+// to.
+Image placeholder = Image.createImage(deviceWidth, deviceWidth);
+EncodedImage encImage = EncodedImage.createFromImage(placeholder, false);
+
+// Load an image from cloudinary
+Image img2 = cloudinary.url()
+        .type("fetch")  // Says we are fetching an image
+        .format("jpg")  // We want it to be a jpg
+        .transformation(
+            new Transformation().crop("fill")  //  We crop the image to fill the given width/height
+                .width(deviceWidth)  
+                .height(deviceWidth)
+        )
+        .image(encImage, "http://upload.wikimedia.org/wikipedia/commons/4/46/Jennifer_Lawrence_at_the_83rd_Academy_Awards.jpg");
+
+// Add the image to a label and place it on the form.
+Label l = new Label(img2);
+
+```
+
+**Alternatively Using Async API**
+
+```java
+cloudinary.url()
+    .transformation(new Transformation().crop("fill").width(100).height(100))
+    .format("jpg")
+    .type("fetch")
+    .image("http://upload.wikimedia.org/wikipedia/commons/4/46/Jennifer_Lawrence_at_the_83rd_Academy_Awards.jpg", (img3)->{
+        Label l3 = new Label(img3);
+        f.addComponent(l3);
+        f.revalidate();
+    });
+
+```
+
 ## License
 
 Released under the MIT license. 

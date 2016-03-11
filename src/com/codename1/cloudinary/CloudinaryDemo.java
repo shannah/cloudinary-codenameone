@@ -100,6 +100,10 @@ public class CloudinaryDemo {
         
         hi.addComponent(b);
         
+        
+        // Or using the Async API.
+        
+        
         hi.show();
     }
 
@@ -134,6 +138,15 @@ public class CloudinaryDemo {
         l.getAllStyles().setPadding(0, 0,0,0);
         f.addComponent(l);
         f.show();
+        
+        // Or using async API
+        cloudinary.url().transformation(new Transformation().crop("fill").width(100).height(100)).format("jpg").type("fetch")
+            .image("http://upload.wikimedia.org/wikipedia/commons/4/46/Jennifer_Lawrence_at_the_83rd_Academy_Awards.jpg", (img3)->{
+                System.out.println("Loaded");
+                Label l3 = new Label(img3);
+                f.addComponent(l3);
+                f.revalidate();
+            });
     }
     
     public void stop() {
