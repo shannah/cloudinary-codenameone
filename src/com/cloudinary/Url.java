@@ -16,6 +16,7 @@ import com.codename1.ui.EncodedImage;
 import com.codename1.ui.Image;
 import com.codename1.ui.URLImage;
 import com.cloudinary.codename1.util.CN1String;
+import com.codename1.util.SuccessCallback;
 
 
 public class Url {
@@ -680,7 +681,28 @@ public class Url {
 		return this;
 	}
         
+        /**
+         * Returns the image as a URLImage.
+         * @param placeholder Placeholder that is used to specify the size of the image.
+         * @param source The source image.
+         * @return URLImage of the image.
+         * @see #image(com.codename1.ui.EncodedImage, java.lang.String, com.codename1.ui.URLImage.ImageAdapter) 
+         * @see #image(java.lang.String, com.codename1.util.SuccessCallback) 
+         */
         public Image image(EncodedImage placeholder, String source) {
+            return image(placeholder, source, null);
+        }
+        
+        /**
+         * Returns the URL contents as a URLImage with the provided placeholder.
+         * @param placeholder The placeholder to use for the image.
+         * @param source The source of the image.
+         * @param adapter An adapter to use to process/resize/mask the image.
+         * @return URLImage of the source image.
+         * @see #image(java.lang.String, com.codename1.util.SuccessCallback) 
+         * @see #image(com.codename1.ui.EncodedImage, java.lang.String) 
+         */
+        public Image image(EncodedImage placeholder, String source, URLImage.ImageAdapter adapter) {
             Transformation t = this.transformation();
             if (t == null) {
                 t = new Transformation();
@@ -693,6 +715,27 @@ public class Url {
             if (cache == null) {
                 cache = url;
             }
-            return URLImage.createToStorage(placeholder, cache, url, null);
+            return URLImage.createToStorage(placeholder, cache, url, adapter);
+        }
+        
+        /**
+         * Loads the image asynchronously, and passes it to the onLoad callback.
+         * @param source The source image.
+         * @param onLoad Callback that is passed the image when it is finished loading.
+         * @see #image(com.codename1.ui.EncodedImage, java.lang.String) 
+         * @see #image(com.codename1.ui.EncodedImage, java.lang.String, com.codename1.ui.URLImage.ImageAdapter) 
+         */
+        public void image(String source, SuccessCallback<Image> onLoad) {
+            Transformation t = this.transformation();
+            if (t == null) {
+                t = new Transformation();
+                this.transformation(t);
+            }
+            String url = generate(source);
+            String cache = this.cacheName;
+            if (cache == null) {
+                cache = url;
+            }
+            com.codename1.io.Util.downloadImageToStorage(url, cache, onLoad);
         }
 }
