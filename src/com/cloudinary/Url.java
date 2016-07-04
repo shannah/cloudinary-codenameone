@@ -331,7 +331,7 @@ public class Url {
 			}
 		}
 		
-		if (new CN1String(source.toLowerCase()).matches("^https?:/.*")) {
+		if (new CN1String(source.toLowerCase()).matches("^https?:/")) {
 			if (StringUtils.isEmpty(type) || "asset".equals(type) ) {
 				return source;
 			}
@@ -350,7 +350,7 @@ public class Url {
 		source = finalizedSource[0];
 		String sourceToSign = finalizedSource[1];
 		
-		if (new CN1String(sourceToSign).contains("/") && !new CN1String(sourceToSign).matches("v[0-9]+.*") && !new CN1String(sourceToSign).matches("https?:/.*") && StringUtils.isEmpty(version)) {
+		if (new CN1String(sourceToSign).contains("/") && !new CN1String(sourceToSign).matches("v[0-9]+.*") && !new CN1String(sourceToSign).matches("https?:/") && StringUtils.isEmpty(version)) {
 			version = "1";
 		}
 
@@ -391,7 +391,7 @@ public class Url {
 		source = new CN1String(source).replaceAll("([^:])//", "\1/");
 
 		String sourceToSign;
-		if (new CN1String(source.toLowerCase()).matches("^https?:/.*")) {
+		if (new CN1String(source.toLowerCase()).matches("^https?:/")) {
 			source = SmartUrlEncoder.encode(source);
 			sourceToSign = source;
 		} else {
