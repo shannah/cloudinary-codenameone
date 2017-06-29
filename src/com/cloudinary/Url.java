@@ -75,15 +75,20 @@ public class Url {
 		return cloned;
 	}
 
-	private static Pattern identifierPattern = Pattern.compile("^(?:([^/]+)/)??(?:([^/]+)/)??(?:v(\\d+)/)?" + "(?:([^#/]+?)(?:\\.([^.#/]+))?)(?:#([^/]+))?$");
-
+	private static Pattern _identifierPattern = null; //Pattern.compile("^(?:([^/]+)/)??(?:([^/]+)/)??(?:v(\\d+)/)?" + "(?:([^#/]+?)(?:\\.([^.#/]+))?)(?:#([^/]+))?$");
+        private static Pattern identifierPattern() {
+            if (_identifierPattern == null) {
+                _identifierPattern = Pattern.compile("^(?:([^/]+)/)??(?:([^/]+)/)??(?:v(\\d+)/)?" + "(?:([^#/]+?)(?:\\.([^.#/]+))?)(?:#([^/]+))?$");
+            }
+            return _identifierPattern;
+        }
 	/**
 	 * Parses a cloudinary identifier of the form:
 	 * [&lt;resource_type&gt;/][&lt;image_type
 	 * &gt;/][v&lt;version&gt;/]&lt;public_id&gt;[.&lt;format&gt;][#&lt;signature&gt;]
 	 */
 	public Url fromIdentifier(String identifier) {
-		Matcher matcher = identifierPattern.matcher(identifier);
+		Matcher matcher = identifierPattern().matcher(identifier);
 		if (!matcher.matches()) {
 			throw new RuntimeException("Couldn't parse identifier "+ identifier);
 		}

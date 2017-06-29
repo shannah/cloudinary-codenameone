@@ -77,7 +77,7 @@
             vendor="${codename1.vendor}"
             subtitle="${codename1.secondaryTitle}"
             
-            targetType="iphone"
+            targetType="debug_iphone_steve"
             certificate="${codename1.ios.debug.certificate}"
             certPassword="${codename1.ios.debug.certificatePassword}"
             provisioningProfile="${codename1.ios.debug.provision}"
@@ -425,7 +425,7 @@
     </target>
 
 
-    <target name="cn1lib">
+    <target name="cn1lib" description="Build cn1lib">
         <delete dir="dist/cloudinary-codenameone"/>
         <copy todir="dist/cloudinary-codenameone">
             <fileset dir="cloudinary-codenameone"/>
